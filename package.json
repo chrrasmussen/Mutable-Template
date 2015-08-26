@@ -1,0 +1,14 @@
+{
+  "name": "MutableTemplate",
+  "version": "1.0.0",
+  "description": "Mutable Template is a templating format for updating the contents of the template itself. This is useful for configuration files where you have a current configuration, but that you need to update some values using a script.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christian Rasmussen <christian.rasmussen@me.com>",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": {
+    "muttem": "index.js"
+  }
+}
