@@ -1,0 +1,4 @@
+# MT-COMMENT
+root:
+    sub:
+    - "Replaced value" # MT-REPLACE: - "{{value}}"
