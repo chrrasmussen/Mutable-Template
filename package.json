@@ -16,6 +16,6 @@
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "muttem": "index.js"
+    "muttem": "dist/index.js"
   }
 }
