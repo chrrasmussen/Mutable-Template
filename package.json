@@ -1,21 +1,27 @@
 {
-  "name": "muttem",
+  "name": "mutabletemplate",
   "version": "1.0.0",
   "description": "Mutable Template is a templating format for updating the contents of the template itself. This is useful for configuration files where you have a current configuration, but that you need to update some values using a script.",
+  "main": "dist/mutabletemplate.js",
   "dependencies": {
+    "docopt": "^0.6.2",
+    "get-stdin": "^4.0.1",
+    "query-string": "^2.4.0"
   },
   "devDependencies": {
-    "babel": "^5.8.21"
+    "babel": "^5.8.21",
+    "supervisor": "^0.7.1"
   },
-  "scripts" : {
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "mkdir -p dist && ./node_modules/.bin/babel --source-maps inline src/index.js --out-file dist/index.js",
-    "prepublish": "npm run build"
+    "build": "mkdir -p dist && ./node_modules/.bin/babel --source-maps inline src/index.js --out-file dist/index.js && ./node_modules/.bin/babel --source-maps inline src/mutabletemplate.js --out-file dist/mutabletemplate.js",
+    "prepublish": "npm run build",
+    "dev": "supervisor --no-restart-on exit --watch src  -- ./node_modules/.bin/babel-node src/index.js"
   },
   "author": "Christian Rasmussen <christian.rasmussen@me.com>",
   "license": "MIT",
   "preferGlobal": true,
   "bin": {
-    "muttem": "dist/index.js"
+    "mt": "dist/index.js"
   }
 }

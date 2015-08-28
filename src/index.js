@@ -1,24 +1,72 @@
+#!/usr/bin/env node
+
 import fs from 'fs';
-const muttem = require('./muttem');
+import { docopt } from 'docopt';
+import stdin from 'get-stdin';
+import queryString from 'query-string';
 
-// Test YAML
-const yamlTestBefore = fs.readFileSync('test/yaml-test-before.yml').toString();
-const yamlTestAfter = fs.readFileSync('test/yaml-test-after.yml').toString();
+const mt = require('./mutabletemplate');
 
-const yamlResult = muttem.replace(yamlTestBefore, {
-    value: 'Replaced value'
+
+const packageConfig = JSON.parse(fs.readFileSync('package.json').toString());
+
+
+const doc = `
+${packageConfig.description}
+
+Use "-" in-place of <file> to apply transformation to stdin.
+
+Usage:
+  mt [options] <file> [(<key> <value>)...]
+
+Options:
+  --data-json=JSON              JSON data as replacement values
+  --data-urlencoded=URLENCODED  URL-encoded data as replacement values
+  --help                        This help text
+  --version                     Show version number and quit
+`;
+
+const options = docopt(doc, {
+    // argv: ['--data-json', '{"a": "b"}', '--input-file', 'test/yaml-test-before.yml'],
+    // argv: ['--data-urlencoded', 'a=b', '--input-file', 'test/yaml-test-before.yml'],
+    argv: ['--help'],
+    // argv: ['test/yaml-test-before.yml', 'port', '8000', 'c', 'd'],
+    version: packageConfig.version
 });
 
-console.log(yamlResult);
-console.log(yamlResult == yamlTestAfter);
+// let inputDataPromise = getInputDataPromise(options['--input-file']);
 
-// Test HTML
-const htmlTestBefore = fs.readFileSync('test/html-test-before.html').toString();
-const htmlTestAfter = fs.readFileSync('test/html-test-after.html').toString();
 
-const htmlResult = muttem.replace(htmlTestBefore, {
-    base: '/replaced/path'
-});
+// function getInputDataPromise(inputFile) {
+//     return new Promise((resolve, reject) => {
+//         if (inputFile) {
+//             try {
+//                 resolve(fs.readFileSync(inputFile).toString());
+//             }
+//             catch (e) {
+//                 reject(`Unable to read input file (${inputFile})`);
+//             }
+//         }
+//         else {
+//             stdin(data => resolve(data));
+//         }
+//     });
+// }
 
-console.log(htmlResult);
-console.log(htmlResult == htmlTestAfter);
+// function getStdinPromise() {
+//     return new Promise((resolve, reject) => {
+//         stdin(data => resolve(data));
+//     });
+// }
+
+// function parseData(json, urlencoded) {
+//     if (json) {
+//         return JSON.parse(json);
+//     }
+//     else if (urlencoded) {
+//         return queryString.parse(urlencoded);
+//     }
+//     // TODO: Add more
+// }
+
+console.log(options);
