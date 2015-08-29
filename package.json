@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/jasmine",
-    "build": "mkdir -p dist && ./node_modules/.bin/babel --source-maps inline src/index.js --out-file dist/index.js && ./node_modules/.bin/babel --source-maps inline src/mutabletemplate.js --out-file dist/mutabletemplate.js",
+    "build": "mkdir -p dist && ./node_modules/.bin/babel --source-maps inline src --out-dir dist",
     "prepublish": "npm run build"
   },
   "author": "Christian Rasmussen <christian.rasmussen@me.com>",
