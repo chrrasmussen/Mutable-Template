@@ -3,7 +3,7 @@ import fs from 'fs';
 const mt = require('../src/mutabletemplate');
 
 
-describe('Replace same line', () => {
+describe('MT-REPLACE on same line', () => {
     it('works for YAML', () => {
         const inputFile = loadResource('yaml-test-before.yml');
         const expectation = loadResource('yaml-test-after.yml');
