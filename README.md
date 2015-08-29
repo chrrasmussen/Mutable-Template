@@ -14,9 +14,17 @@ Advantages:
 - The template parts of Mutable Template is easily kept in sync with the actual contents of the file.
 
 
+## Prerequisites
+
+- [Node](https://nodejs.org) or [io.js](https://iojs.org/en/index.html)
+- [NPM](https://www.npmjs.com)
+
+
 ## Installation
 
-TODO
+1. `npm install -g mutabletemplate`
+
+You may need to run the comamnd with `sudo` (on Linux/OS X) or run Command Prompt as Administrator (on Windows).
 
 
 ## Usage
