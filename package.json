@@ -11,14 +11,12 @@
   },
   "devDependencies": {
     "babel": "^5.8.21",
-    "jasmine-es6": "0.0.17",
-    "supervisor": "^0.7.1"
+    "jasmine-es6": "0.0.17"
   },
   "scripts": {
     "test": "./node_modules/.bin/jasmine",
     "build": "mkdir -p dist && ./node_modules/.bin/babel --source-maps inline src/index.js --out-file dist/index.js && ./node_modules/.bin/babel --source-maps inline src/mutabletemplate.js --out-file dist/mutabletemplate.js",
-    "prepublish": "npm run build",
-    "dev": "supervisor --no-restart-on exit --watch src  -- ./node_modules/.bin/babel-node src/index.js"
+    "prepublish": "npm run build"
   },
   "author": "Christian Rasmussen <christian.rasmussen@me.com>",
   "license": "MIT",

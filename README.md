@@ -24,6 +24,13 @@ TODO
 TODO
 
 
+## Tips while developing
+
+`npm install supervisor`
+`supervisor --no-restart-on exit --watch src -- ./node_modules/.bin/babel-node src/index.js`
+`supervisor --no-restart-on exit --watch src,spec --exec npm -- test`
+
+
 ## Contact
 
 - Christian Rasmussen <christian.rasmussen@me.com>
