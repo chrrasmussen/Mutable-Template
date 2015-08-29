@@ -1,5 +1,5 @@
 export function replace(contents, values) {
-    const commentPrototype = findCommentPrototype(contents)
+    const commentPrototype = findCommentPrototype(contents);
     if (!commentPrototype) {
         throw 'Missing comment prototype';
     }
@@ -44,7 +44,7 @@ function replacedLine(line, values, replacementPrototype, commentPrototype) {
     if (match) {
         const leadingWhitespace = match[1];
         const trailingWhitespace = match[2];
-        const comment = match[3]
+        const comment = match[3];
 
         const replacementString = renderReplacementPrototype(replacementPrototype, values);
 
@@ -59,5 +59,5 @@ function renderReplacementPrototype(replacementPrototype, values) {
         const valueWithoutNewlines = value.replace(/\r?\n|\r/g, '');
 
         return valueWithoutNewlines;
-    })
+    });
 }

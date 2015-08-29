@@ -1,0 +1,9 @@
+{
+    "globals": {
+        "require": true
+    },
+    "node": true,
+    "esnext" : true,
+    "jasmine": true,
+    "indent": 4
+}
