@@ -1,5 +1,3 @@
-import mustache from 'mustache';
-
 export function replace(contents, values) {
     const commentPrototype = findCommentPrototype(contents)
     if (!commentPrototype) {
@@ -48,8 +46,18 @@ function replacedLine(line, values, replacementPrototype, commentPrototype) {
         const trailingWhitespace = match[2];
         const comment = match[3]
 
-        const replacementString = mustache.render(replacementPrototype, values);
+        const replacementString = renderReplacementPrototype(replacementPrototype, values);
 
         return leadingWhitespace + replacementString + trailingWhitespace + comment;
     }
+}
+
+function renderReplacementPrototype(replacementPrototype, values) {
+    return replacementPrototype.replace(/{{[^}]*}}/g, placeholder => {
+        const variableName = placeholder.slice(2, placeholder.length - 2);
+        const value = values[variableName];
+        const valueWithoutNewlines = value.replace(/\r?\n|\r/g, '');
+
+        return valueWithoutNewlines;
+    })
 }
