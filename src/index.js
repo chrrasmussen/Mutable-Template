@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import getstdin from 'get-stdin';
+import getStdin from 'get-stdin';
 
 const cli = require('./cli');
 
 
-getstdin(stdin => {
+getStdin(stdin => {
     try {
         const parameters = process.argv.slice(2);
         const stdout = cli.run(parameters, stdin);
