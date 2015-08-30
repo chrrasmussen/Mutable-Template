@@ -1,5 +1,5 @@
 {
-  "name": "mutabletemplate",
+  "name": "mutable-template",
   "version": "1.0.0",
   "description": "Mutable Template is a templating format for updating the contents of the template itself. This is useful for configuration files where you have a current configuration, but that you need to update some values using a script.",
   "main": "dist/mutabletemplate.js",

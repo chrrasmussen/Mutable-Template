@@ -22,7 +22,7 @@ Advantages:
 
 ## Installation
 
-1. `npm install -g mutabletemplate`
+1. `npm install -g mutable-template`
 
 You may need to run the command with `sudo` (on Linux/OS X) or run Command Prompt as Administrator (on Windows).
 
