@@ -59,7 +59,7 @@ Use stdin and stdout to perform safe transformation:
 
 Downloading and installing source code:
 
-1. `git clone https://github.com/chrrasmussen/mutable-template.git`
+1. `git clone https://github.com/chrrasmussen/Mutable-Template.git`
 2. `cd mutable-template`
 3. `npm install`
 4. `npm run build`
