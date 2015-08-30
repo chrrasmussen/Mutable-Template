@@ -5,8 +5,8 @@ Mutable Template is a templating format for updating the contents of the templat
 Mutable Template uses a similar syntax as [Mustache](https://mustache.github.io). The input consist of key-values pairs of one of the following formats:
 
 - JSON
-- Form-encoded parameters
-- Shell environment variables
+- URL-encoded parameters
+- Command line parameters (making it easy to include shell environment variables)
 
 Advantages:
 
@@ -29,14 +29,49 @@ You may need to run the command with `sudo` (on Linux/OS X) or run Command Promp
 
 ## Usage
 
-TODO
+```
+Mutable Template is a templating format for updating the contents of the template itself. This is useful for configuration files where you have a current configuration, but that you need to update some values using a script.
+
+Use "-" in-place of <file> to apply transformation to stdin.
+
+Usage:
+  mt [options] <file> [(<key> <value>)...]
+
+Options:
+  --data-json=JSON              JSON data as replacement values
+  --data-urlencoded=URLENCODED  URL-encoded data as replacement values
+  --help                        This help text
+  --version                     Show version number
+```
 
 
-## Tips while developing
+## Contributing
 
-`npm install supervisor`
-`supervisor --no-restart-on exit --watch src -- ./node_modules/.bin/babel-node src/index.js`
-`supervisor --no-restart-on exit --watch src,spec --exec npm -- test`
+Downloading and installing source code:
+
+1. `git clone https://github.com/chrrasmussen/mutable-template.git`
+2. `cd mutable-template`
+3. `npm install`
+4. `npm run build`
+5. `npm link`
+
+
+### Tips while developing
+
+Running tests:
+
+1. `npm test`
+
+
+Running tests continuosly:
+
+1. `npm install supervisor`
+2. `supervisor --no-restart-on exit --watch src,spec --exec npm -- test`
+
+
+Running CLI after making changes to the source code:
+
+1. `npm run build && mt <parameters>`
 
 
 ## Contact
