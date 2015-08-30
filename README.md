@@ -24,7 +24,7 @@ Advantages:
 
 1. `npm install -g mutabletemplate`
 
-You may need to run the comamnd with `sudo` (on Linux/OS X) or run Command Prompt as Administrator (on Windows).
+You may need to run the command with `sudo` (on Linux/OS X) or run Command Prompt as Administrator (on Windows).
 
 
 ## Usage
