@@ -44,6 +44,16 @@ Options:
   --version                     Show version number
 ```
 
+### Examples
+
+Use external JSON file as input values:
+
+`mt "--data-json=$(cat input.json)" nginx.conf`
+
+Use stdin and stdout to perform safe transformation:
+
+`cat originalFile.yml | mt - value "Updated value" > updatedFile.yml`
+
 
 ## Contributing
 
@@ -55,6 +65,8 @@ Downloading and installing source code:
 4. `npm run build`
 5. `npm link`
 
+The command line tool `mt` is now available.
+
 
 ### Tips while developing
 
@@ -63,7 +75,7 @@ Running tests:
 1. `npm test`
 
 
-Running tests continuosly:
+Running tests continuously:
 
 1. `npm install supervisor`
 2. `supervisor --no-restart-on exit --watch src,spec --exec npm -- test`
