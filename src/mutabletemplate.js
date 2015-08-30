@@ -1,7 +1,10 @@
+import objectPath from 'object-path';
+
+
 export function replace(contents, values) {
     const commentPrototype = findCommentPrototype(contents);
     if (!commentPrototype) {
-        throw 'Missing comment prototype';
+        throw new Error('Missing comment prototype');
     }
 
     const inputLines = contents.split(/\n/);
@@ -54,8 +57,8 @@ function replacedLine(line, values, replacementPrototype, commentPrototype) {
 
 function renderReplacementPrototype(replacementPrototype, values) {
     return replacementPrototype.replace(/{{[^}]*}}/g, placeholder => {
-        const variableName = placeholder.slice(2, placeholder.length - 2);
-        const value = values[variableName];
+        const keyPath = placeholder.slice(2, placeholder.length - 2);
+        const value = objectPath.get(values, keyPath);
         const valueWithoutNewlines = value.replace(/\r?\n|\r/g, '');
 
         return valueWithoutNewlines;
