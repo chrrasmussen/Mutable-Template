@@ -16,7 +16,7 @@ Advantages:
 
 ## Prerequisites
 
-- [Node](https://nodejs.org) or [io.js](https://iojs.org/en/index.html)
+- [Node.js](https://nodejs.org) or [io.js](https://iojs.org/en/index.html)
 - [NPM](https://www.npmjs.com)
 
 
