@@ -77,3 +77,8 @@ Running CLI after making changes to the source code:
 ## Contact
 
 - Christian Rasmussen <christian.rasmussen@me.com>
+
+
+## License
+
+This tool is licensed under the MIT license. See LICENSE for more details.
