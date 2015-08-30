@@ -1,11 +1,10 @@
-import fs from 'fs';
-
 const cli = require('../src/cli');
+const resources = require('./helpers/resources');
 
 
 describe('CLI', () => {
-    const inputFile = loadResource('yaml-test-before.yml');
-    const expectation = loadResource('yaml-test-after.yml');
+    const inputFile = resources.load('yaml-test-before.yml');
+    const expectation = resources.load('yaml-test-after.yml');
     
     it('works with JSON data', () => {
         const json = JSON.stringify({
@@ -29,8 +28,3 @@ describe('CLI', () => {
         expect(result).toEqual(expectation);
     });
 });
-
-
-function loadResource(filename) {
-    return fs.readFileSync(`${__dirname}/resources/${filename}`).toString();
-}

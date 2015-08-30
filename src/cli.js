@@ -3,7 +3,7 @@ import { docopt } from 'docopt';
 import queryString from 'query-string';
 import objectPath from 'object-path';
 
-const mt = require('./mutabletemplate');
+const mutableTemplate = require('./mutable-template');
 
 
 const packageConfig = JSON.parse(fs.readFileSync('package.json').toString());
@@ -40,7 +40,7 @@ function parseOptions(options, stdin) {
     
     const values = parseInputValues(options['--data-json'], options['--data-urlencoded'], options['<key>'], options['<value>']);
     
-    const stdout = mt.replace(contents, values);
+    const stdout = mutableTemplate.replace(contents, values);
     
     if (shouldUseStdin) {
         return stdout;
