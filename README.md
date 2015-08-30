@@ -2,7 +2,7 @@
 
 Mutable Template is a templating format for updating the contents of the template itself. This is useful for configuration files where you have a current configuration, but that you need to update some values using a script.
 
-Mutable Template uses a similar syntax as [Mustache](https://mustache.github.io). The input consist of key-values pairs of one of the following formats:
+Mutable Template uses a similar syntax as [Mustache](https://mustache.github.io)/[Handlebars](http://handlebarsjs.com). The input consist of key-values pairs of one of the following formats:
 
 - JSON
 - URL-encoded parameters
