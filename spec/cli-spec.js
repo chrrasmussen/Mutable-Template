@@ -22,7 +22,7 @@ describe('CLI', () => {
         expect(result).toEqual(expectation);
     });
     
-    it('works with JSON', () => {
+    it('works with command line parameters', () => {
         const result = cli.run(['-', 'value', 'Replaced value'], inputFile);
         
         expect(result).toEqual(expectation);
