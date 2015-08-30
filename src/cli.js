@@ -35,11 +35,19 @@ export function run(parameters, stdin) {
 
 function parseOptions(options, stdin) {
     const filePath = options['<file>'];
-    const contents = (filePath === '-') ? stdin : loadTemplateFile(filePath);
+    const shouldUseStdin = (filePath === '-');
+    const contents = (shouldUseStdin) ? stdin : loadTemplateFile(filePath);
     
     const values = parseInputValues(options['--data-json'], options['--data-urlencoded'], options['<key>'], options['<value>']);
     
-    return mt.replace(contents, values);
+    const stdout = mt.replace(contents, values);
+    
+    if (shouldUseStdin) {
+        return stdout;
+    }
+    else {
+        safeWriteFileSync('.mt_', filePath, stdout);
+    }
 }
 
 function loadTemplateFile(filePath) {
@@ -70,4 +78,25 @@ function parseInputValues(json, urlencoded, keys, values) {
     else {
         return {};
     }
+}
+
+function safeWriteFileSync(prefix, originalFilePath, data, options) {
+    var originalFilename = getFilename(originalFilePath);
+    var originalDir = getDir(originalFilePath);
+    
+    var tmpFilename = prefix + originalFilename;
+    var tmpFilePath = originalDir + tmpFilename;
+    
+    fs.writeFileSync(tmpFilePath, data, options);
+    fs.renameSync(tmpFilePath, originalFilePath);
+}
+
+function getFilename(filePath) {
+    // SOURCE: http://stackoverflow.com/a/423385
+    return filePath.replace(/^.*[\\\/]/, '');
+}
+
+function getDir(filePath) {
+    // SOURCE: http://stackoverflow.com/a/7601721
+    return filePath.replace(/[^\\\/]*$/, '');
 }
