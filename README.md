@@ -48,7 +48,7 @@ Options:
 
 Use external JSON file as input values:
 
-`mutable-template "--data-json=$(cat input.json)" nginx.conf`
+`mutable-template --data-json="$(cat input.json)" nginx.conf`
 
 Use stdin and stdout to perform safe transformation:
 
