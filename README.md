@@ -30,7 +30,7 @@ You may need to run the command with `sudo` (on Linux/OS X) or run Command Promp
 ## Usage
 
 ```
-Mutable Template is a templating format for updating the contents of the template itself. This is useful for configuration files where you have a current configuration, but that you need to update some values using a script.
+Mutable Template is a templating format for updating the contents of the template itself.
 
 Use "-" in-place of <file> to apply transformation to stdin.
 
