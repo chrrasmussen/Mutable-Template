@@ -35,7 +35,7 @@ Mutable Template is a templating format for updating the contents of the templat
 Use "-" in-place of <file> to apply transformation to stdin.
 
 Usage:
-  mt [options] <file> [(<key> <value>)...]
+  mutable-template [options] <file> [(<key> <value>)...]
 
 Options:
   --data-json=JSON              JSON data as replacement values
@@ -48,11 +48,11 @@ Options:
 
 Use external JSON file as input values:
 
-`mt "--data-json=$(cat input.json)" nginx.conf`
+`mutable-template "--data-json=$(cat input.json)" nginx.conf`
 
 Use stdin and stdout to perform safe transformation:
 
-`cat originalFile.yml | mt - value "Updated value" > updatedFile.yml`
+`cat originalFile.yml | mutable-template - value "Updated value" > updatedFile.yml`
 
 
 ## Contributing
@@ -65,7 +65,7 @@ Downloading and installing source code:
 4. `npm run build`
 5. `npm link`
 
-The command line tool `mt` is now available.
+The command line tool `mutable-template` is now available.
 
 
 ### Tips while developing
@@ -83,7 +83,7 @@ Running tests continuously:
 
 Running CLI after making changes to the source code:
 
-1. `npm run build && mt <parameters>`
+1. `npm run build && mutable-template <parameters>`
 
 
 ## Contact

@@ -14,7 +14,7 @@ const doc = `${packageConfig.description}
 Use "-" in-place of <file> to apply transformation to stdin.
 
 Usage:
-  mt [options] <file> [(<key> <value>)...]
+  mutable-template [options] <file> [(<key> <value>)...]
 
 Options:
   --data-json=JSON              JSON data as replacement values
