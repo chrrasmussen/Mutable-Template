@@ -46,21 +46,93 @@ Options:
 
 ### Examples
 
-Use external JSON file as input values:
+All of the examples use the following minimal Nginx config (`nginx.conf`) as the basis:
 
-`mutable-template --data-json="$(cat input.json)" nginx.conf`
+```
+server {
+    location / {
+        proxy_pass http://localhost:8080;
+    }
+}
+```
 
-Use stdin and stdout to perform safe transformation:
+This config is augmented with Mutable Template syntax, as follows:
 
-`cat originalFile.yml | mutable-template - value "Updated value" > updatedFile.yml`
+```
+# MT-COMMENT
+server {
+    location / {
+        proxy_pass http://localhost:8080; # MT-REPLACE: proxy_pass http://localhost:{{port}};
+    }
+}
+```
 
+#### Update config using command line parameters
+
+The following command will update the Nginx config (```nginx.conf```) in-place with its new port number:
+
+`$ mutable-template nginx.conf port 8081`
+
+The result is listed below:
+
+```
+# MT-COMMENT
+server {
+    location / {
+        proxy_pass http://localhost:8081; # MT-REPLACE: proxy_pass http://localhost:{{port}};
+    }
+}
+```
+
+#### Use external JSON file as replacement values
+
+Mutable Template does also support replacement values in other formats, such as JSON data and URL-encoded data. In this example we will use an external JSON file (`input.json`) to update the Nginx config:
+
+
+```
+{
+    "port": 8082
+}
+```
+
+The following command will update the Nginx config (`nginx.conf`) in-place using the `input.json` as replacement values:
+
+`$ mutable-template --data-json="$(cat input.json)" nginx.conf`
+
+The result is listed below:
+
+```
+# MT-COMMENT
+server {
+    location / {
+        proxy_pass http://localhost:8082; # MT-REPLACE: proxy_pass http://localhost:{{port}};
+    }
+}
+```
+
+#### Use stdin and stdout to perform safe transformation
+
+The following command will read the contents of `nginx.conf` from stdin and output the result to stdout, which in turn is written to a file named `updated-nginx.conf`:
+
+`$ cat nginx.conf | mutable-template - port 8083 > updated-nginx.conf`
+
+The result is listed below:
+
+```
+# MT-COMMENT
+server {
+    location / {
+        proxy_pass http://localhost:8083; # MT-REPLACE: proxy_pass http://localhost:{{port}};
+    }
+}
+```
 
 ## Contributing
 
 Downloading and installing source code:
 
 1. `git clone https://github.com/chrrasmussen/Mutable-Template.git`
-2. `cd mutable-template`
+2. `cd Mutable-Template`
 3. `npm install`
 4. `npm run build`
 5. `npm link`
