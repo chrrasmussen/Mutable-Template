@@ -29,6 +29,12 @@ You may need to run the command with `sudo` (on Linux/OS X) or run Command Promp
 
 ## Usage
 
+### Command line tool
+
+Enter the following command to view Mutable Template's CLI usage.
+
+`$ mutable-template --help`
+
 ```
 Mutable Template is a templating format for updating the contents of the template itself.
 
@@ -43,6 +49,24 @@ Options:
   --help                        This help text
   --version                     Show version number
 ```
+
+
+### Applying Mutable Template to a file
+
+To be able to use Mutable Template, the file needs to be augmented with the following tags:
+
+- `MT-COMMENT`: Specified once per file, in order for Mutable Template to recognize the file's comment format
+- `MT-REPLACE:`: Specified for every line where you want to replace/update the content
+
+Assumptions:
+
+- The comment including `MT-COMMENT` must be placed on its own line
+- All text before and after `MT-COMMENT` will be used as the comment format (which is used to find the `MT-REPLACE:` tags)
+- The replacement tags (`MT-REPLACE:`) must be placed after the content it should replace
+- The "mini template" specified after `MT-REPLACE:` will wholly replace the contents before the tag
+
+See examples in the `Examples` section.
+
 
 ### Examples
 
@@ -66,6 +90,7 @@ server {
     }
 }
 ```
+
 
 #### Update config using command line parameters
 
